@@ -1,48 +1,51 @@
 console.log("Welcome to the main module")
 
+
+
+
+// import { createAsparagus } from "./seeds/asparagus.js";
+// const asparagusSeed = createAsparagus()
+// console.log(asparagusSeed)
+// import { createCorn } from "./seeds/corn.js";
+// const cornSeed = createCorn()
+// console.log(cornSeed)
+// import { createPotato } from "./seeds/potato.js";
+// const potatoSeed = createPotato()
+// console.log(potatoSeed)
+// import { createSoybean } from "./seeds/soybean.js";
+// const soybeanSeed = createSoybean()
+// console.log(soybeanSeed)
+// import { createSunflower } from "./seeds/sunflower.js";
+// const sunflowerSeed = createSunflower()
+// console.log(sunflowerSeed)
+// import { createWheat } from "./seeds/wheat.js";
+// const wheatSeed = createWheat()
+// console.log(wheatSeed)
 import { createPlan } from "./plan.js";
-const thePlan = createPlan()
-console.log(thePlan)
+const yearlyPlan = createPlan()
+console.log(yearlyPlan)
 
-import { createAsparagus } from "./seeds/asparagus.js";
-const asparagusSeed = createAsparagus()
-console.log(asparagusSeed)
-
-import { createCorn } from "./seeds/corn.js";
-const cornSeed = createCorn(createPlan)
-console.log(cornSeed)
-
-import { createPotato } from "./seeds/potato.js";
-const potatoSeed = createPotato(createPlan)
-console.log(potatoSeed)
-
-import { createSoybean } from "./seeds/soybean.js";
-const soybeanSeed = createSoybean(createPlan)
-console.log(soybeanSeed)
-
-import { createSunflower } from "./seeds/sunflower.js";
-const sunflowerSeed = createSunflower(createPlan)
-console.log(sunflowerSeed)
-
-import { createWheat } from "./seeds/wheat.js";
-const wheatSeed = createWheat(createPlan)
-console.log(wheatSeed)
-
-// not having output in console from main. empty arrays
-import { addPlant } from "./field.js";
 import { usePlants } from "./field.js";
+const seedObject = usePlants(yearlyPlan)
+console.log(seedObject)
 
-console.log(addPlant)
-
-console.log(usePlants)
 
 import { plantSeeds } from "./tractor.js";
-const babyPlants = plantSeeds(thePlan)
-console.log(babyPlants)
+const plantedSeeds = plantSeeds(yearlyPlan)
+console.log(plantedSeeds)
 
 import { harvestPlants } from "./harvester.js";
-const bigPlants = harvestPlants()
-console.log(bigPlants)
+const harvestedPlants = harvestPlants(plantedSeeds)
+console.log(harvestedPlants)
+
+
+
+import { catalog } from "./catalog.js";
+const htmlString = document.querySelector(".container")
+htmlString.innerHTML = catalog(harvestedPlants)
+const plantList = catalog(harvestedPlants)
+console.log(plantList)
+
 
 
 
